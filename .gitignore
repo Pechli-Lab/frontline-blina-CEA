@@ -1,0 +1,25 @@
+# Specific folders to ignore
+.Rproj.user/
+
+# RStudio specific files
+.Rhistory
+.RData
+.Ruserdata
+
+# Other common files to ignore
+.DS_Store
+
+# Files to exclude from github tracking
+data.[0-9]*.rds
+effect.[0-9]*.rds
+cost.[0-9]*.rds
+tBMT.[0-9]*.rds
+tREL.[0-9]*.rds
+tc.[0-9]*.rds
+tc_hat.[0-9]*.rds
+te.[0-9]*.rds
+te_hat.[0-9]*.rds
+
+# Folders to ignore
+manuscript/
+literature/
