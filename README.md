@@ -1,15 +1,13 @@
-#  Cost-effectiveness of Frontline Blinatumomab for Pediatric B-cell Acute Lymphoblastic Leukemia
+# Cost-effectiveness of Frontline Blinatumomab for Pediatric B-cell Acute Lymphoblastic Leukemia
 
 ## Overview
 
 Repository for the manuscript "**Cost-effectiveness of frontline blinatumomab in children with standard- and high-risk B-cell acute lymphoblastic leukemia in Ontario, Canada**". The repository describes a cost-effectiveness analysis (CEA) of using frontline blinatumomab in children diagnosed with NCI standard- and high-risk B-cell acute lymphoblastic leukemia (ALL). This analysis adopts a previously published "ALL Policy" microsimulation model ([Development of a policy model for pediatric acute lymphoblastic leukemia to facilitate economic evaluation](https://doi.org/10.1093/jnci/djaf024)) by Pechlivanoglou _et al_ (2025) that was constructed using real-world evidence from children diagnosed and treated from 2002 to 2017 in the universal healthcare system of Ontario, Canada. With the ALL-Policy model as a basis, we have augmented it to incorporate an economic evaluation of blinatumomab as a frontline therapy using treatment efficacy informed by the [AALL1731 trial](https://clinicaltrials.gov/study/NCT03914625) results ([Gupta _et al_ NEJM 2025](https://doi.org/10.1056/NEJMoa2411680)).
 
 The objectives of this manuscript are to assess the cost-effectiveness of frontline blinatumomab for:
-- i) standard-risk B-ALL (defined as age 1-9 at diagnosius with white blood cell count < 50,000/&micro;L) 
-- ii) high-risk B-ALL (white blood cell count &ge; 50,000 /&micro;L or age 10-17 at diagnosis)
 
-> [!IMPORTANT]
-> The model parameters informed by the real-world cohort analyzed at ICES (`model-parameters/cohort/`, `model-parameters/costs/`, `model-parameters/events/`) are currently restricted for public use and have not been uploaded to this repository. Please contact the authors for further information; while legal data sharing agreements between ICES and data providers (e.g., healthcare organizations and government) prohibit ICES from making the datasets & resulting parameters publicly available, access may be granted to those who meet pre-specified criteria for confidential access. 
+- i) standard-risk B-ALL (defined as age 1-9 at diagnosius with white blood cell count < 50,000/&micro;L)
+- ii) high-risk B-ALL (white blood cell count &ge; 50,000 /&micro;L or age 10-17 at diagnosis)
 
 ## Usage
 
