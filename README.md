@@ -6,7 +6,7 @@ Repository for the manuscript "**Cost-effectiveness of frontline blinatumomab in
 
 The objectives of this manuscript are to assess the cost-effectiveness of frontline blinatumomab for:
 
-- i) standard-risk B-ALL (defined as age 1-9 at diagnosius with white blood cell count < 50,000/&micro;L)
+- i) standard-risk B-ALL (defined as age 1-9 at diagnosis with white blood cell count < 50,000/&micro;L)
 - ii) high-risk B-ALL (white blood cell count &ge; 50,000 /&micro;L or age 10-17 at diagnosis)
 
 ## Usage
