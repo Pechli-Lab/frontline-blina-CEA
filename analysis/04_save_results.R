@@ -206,7 +206,6 @@ for (i in 1:n_sim) {
       blina_trt_cost <- chemo_costs(
         bsa = bsa,
         blina_price = PRICE_BLIN,
-        p_CRS = p_CRS[i],
         p_FN = p_FN[i],
         dur_FN = dur_FN[i],
         p_SEP = p_SEP[i],
@@ -227,7 +226,6 @@ for (i in 1:n_sim) {
       blina_trt_cost_p10 <- chemo_costs(
         bsa = bsa,
         blina_price = PRICE_BLIN * 1.1, # +10%
-        p_CRS = p_CRS[i],
         p_FN = p_FN[i],
         dur_FN = dur_FN[i],
         p_SEP = p_SEP[i],
@@ -238,7 +236,6 @@ for (i in 1:n_sim) {
       blina_trt_cost_m10 <- chemo_costs(
         bsa = bsa,
         blina_price = PRICE_BLIN * 0.9, # -10%
-        p_CRS = p_CRS[i],
         p_FN = p_FN[i],
         dur_FN = dur_FN[i],
         p_SEP = p_SEP[i],
@@ -257,7 +254,6 @@ for (i in 1:n_sim) {
       blina_trt_cost_ivig <- chemo_costs(
         bsa = bsa,
         blina_price = PRICE_BLIN,
-        p_CRS = p_CRS[i],
         p_FN = p_FN[i] * IVIG_REDUC, # reduced risk of FN with IVIG
         dur_FN = dur_FN[i],
         p_SEP = p_SEP[i],

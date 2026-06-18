@@ -44,14 +44,6 @@ denom_AALL1731 <- c(
     (376 + 277) # chemo arm
 )
 
-# Cytokine Release Syndrome
-events_crs <- c(
-    (1 + 1), # blina + chemo arm
-    (0 + 0) # chemo arm
-)
-
-p_CRS <- sim_risk_diff(events_crs, denom_AALL1731, n_sim)
-
 # Febrile Neutropenia (fever) ---------------------------------
 events_fever <- c(
     (165 + 156), # blina + chemo arm
@@ -103,7 +95,7 @@ dis_SEP <- 0.218 # disutility for sepsis (Source: Stein 2018)
 
 # IVIG Price per gram
 PRICE_IVIG <- 23.88 # CAD per gram of IVIG (in 2018 dollars)
-IVIG_REDUC <- (1 - 0.28) # reduction in risk of FN with IVIG
+IVIG_REDUC <- (1 - 0.28) # reduction in risk of FN with IVIG. Comes from evaluating the rate ratio of FN admissions in IVIG group vs control group in the RCT by Thus et al, 2025 Haematologica [(206/91) / (271/86)]
 
 # ------------------------------------------------------------------------------
 

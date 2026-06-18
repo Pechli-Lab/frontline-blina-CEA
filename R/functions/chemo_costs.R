@@ -15,8 +15,6 @@
 #'   Default is 1.09 (average height and weight for a 4 year old male/female).
 #' @param blina_price Numeric. Price per vial of Blinatumomab.
 #'   Default is 2978.26 (Source: CADTH report for Blincyto; https://www.ncbi.nlm.nih.gov/books/NBK616209/)
-#' @param p_CRS Numeric. Probability of experiencing Cytokine Release
-#'   Syndrome. Default is 0.42 (Source: Brown et al. trial for relapsed disease)
 #' @param p_FN Numeric. Probability of experiencing febrile neutropenia.
 #'   Default is 0 (since this is not a cost included in the base case, but can be added in sensitivity analyses).
 #' @param dur_FN Numeric. Duration of febrile neutropenia in days.
@@ -39,17 +37,16 @@
 #' - Costs are calculated per cycle and summed over the treatment period.
 #' - Includes microcosting for chemotherapy drugs and administration.
 #' - Blinatumomab costs include drug, nurse time, IV pump, and hospitalization
-#'   (including CRS).
 #' - Hospitalization costs are based on average pediatric stays.
 #'
 #' @examples
-#' chemo_costs(bsa = 1.2, p_CRS = 0.42, trt_output = "blin")
-#' chemo_costs(bsa = c(0.89, 1.2), p_CRS = 0.000035, trt_output = "bsc")
+#' chemo_costs(bsa = 1.2, trt_output = "blin")
+#' chemo_costs(bsa = c(0.89, 1.2), trt_output = "bsc")
 #'
-chemo_costs <- function(bsa = 1.09, blina_price = 2978.26, p_CRS = 0.42, p_FN = 0, dur_FN = 0, p_SEP = 0, dur_SEP = 0, trt_output = "bsc") {
+chemo_costs <- function(bsa = 1.09, blina_price = 2978.26, p_FN = 0, dur_FN = 0, p_SEP = 0, dur_SEP = 0, trt_output = "bsc") {
   
   # Wrap this in an `mapply` to vectorized operations
-  mapply(function(bsa_i, p_CRS_i, p_FN_i, dur_FN_i, p_SEP_i, dur_SEP_i, blina_price_i) {
+  mapply(function(bsa_i, p_FN_i, dur_FN_i, p_SEP_i, dur_SEP_i, blina_price_i) {
 
     # General --------------------------------------------------------
     model_cycle  <- 7 # model's cycle length (days)
@@ -81,9 +78,6 @@ chemo_costs <- function(bsa = 1.09, blina_price = 2978.26, p_CRS = 0.42, p_FN = 
     hosp_days    <- 11.7 # average length of stay for child aged 1-7 (Source: CIHI Patient Cost Estimator. CMG: 625 - Acute Leukemia except Myeloid, Jurisdiction: Canada)
     c_hosp_day   <- c_hosp_total / hosp_days # cost per day of hospitalization
 
-    # Cytokine Release Syndrome (CRS)
-    hosp_CRS_days <- 9 # duration of hospitalization if CRS (average of 2 + additional 7 = 9) (Source: Assumption)
-
     # Febrile Neutropenia (FN)
     hosp_FN_days <- 2 # duration of hospitalization if FN (Source: Teuffel 2011)
     c_FN_perEpisode <- 5579 * 1.17 # avg cost per person per FN episode inflated from 2009 in the paper to 2018 when all other model costs are in (Source: Teuffel 2011)
@@ -94,7 +88,6 @@ chemo_costs <- function(bsa = 1.09, blina_price = 2978.26, p_CRS = 0.42, p_FN = 
     # Determine additional costs associated with comorbidities -----------------
     c_hosp <- c_hosp_day * hosp1_days # baseline hospitalization costs for Blina
 
-    c_hosp <- c_hosp + (c_hosp_day * p_CRS_i * hosp_CRS_days) # CRS costs
     #c_hosp <- c_hosp + (c_hosp_day * p_FN_i * dur_FN_i) # FN costs (using cihi estimate per day)
     c_hosp <- c_hosp + (p_FN_i * c_FN_perEpisode) # FN costs via the Teuffel 2011 estimate
     c_hosp <- c_hosp + (c_hosp_day * p_SEP_i * dur_SEP_i) # Sepsis costs
@@ -178,5 +171,5 @@ chemo_costs <- function(bsa = 1.09, blina_price = 2978.26, p_CRS = 0.42, p_FN = 
     } else {
       stop("Invalid treatment output specified. Use 'bsc' or 'blin'.")
     }
-  }, bsa, p_CRS, p_FN, dur_FN, p_SEP, dur_SEP, blina_price)
+  }, bsa, p_FN, dur_FN, p_SEP, dur_SEP, blina_price)
 }
