@@ -1,5 +1,7 @@
 ##### OVERALL COHORT ####
 
+set.seed(2022) # set the seed for reproducibility
+
 ##### BLINA ARM #####
 
 # 01 Initial Setup --------------------------------------------------------
@@ -384,6 +386,8 @@ write.csv(x = df_rec_KM_surv_curves,
 library(darthtools)
 library(survHE)
 
+source(file = "R/boot_hr2.R")
+
 df_IPD_blina <- read.csv(file = "data-raw/df_IPD_blina.csv")
 df_IPD_soc <- read.csv(file = "data-raw/df_IPD_soc.csv")
 
@@ -471,7 +475,7 @@ bootHR2 = bootHR[,-1]
 
 bootHR2 = cbind(bootHR2, bootHR2[,ncol(bootHR2)])
 
-# write.csv(bootHR2,  file = paste0("data/Gupta_bootHR_PFS_PSA.csv"),  row.names = FALSE)
+write.csv(bootHR2,  file = paste0("data/Gupta_bootHR_PFS_PSA.csv"),  row.names = FALSE)
 
 #Plot again to illustrate the relative hazard's U shape
 
